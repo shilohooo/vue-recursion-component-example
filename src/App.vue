@@ -1,28 +1,46 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <my-root :folder="root" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import MyRoot from './components/Root.vue'
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  components: { MyRoot },
+  data() {
+    return {
+      root: {
+        text: 'Root Folder',
+        leaf: false,
+        expanded: true,
+        children: [{
+          text: 'Sub Folder 1',
+          leaf: false,
+          expanded: false,
+          children: [{
+            text: 'Sub Sub Folder 1',
+            leaf: false,
+            expanded: false,
+            children: [{
+              text: 'SomeFile1.js',
+              leaf: true
+            }]
+          }, {
+            text: 'Sub Sub Folder 2',
+            leaf: false,
+            expanded: false,
+            children: []
+          }, {
+            text: 'SomeFile.txt',
+            leaf: true
+          }]
+        }]
+      }
+    }
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>
